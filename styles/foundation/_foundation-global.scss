@@ -1,0 +1,402 @@
+// Foundation Global Function, Variables and Mixins
+//
+// Variables
+//
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
+$base-font-size: 100% !default;
+
+// Set your base font-size in pixels so emCalc can do its magic below
+$em-base: 16px !default;
+
+// We use these to control various global styles
+$body-bg: #fff !default;
+$body-font-color: #222 !default;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+
+// We use these to control text direction settings
+$text-direction: ltr !default; // Controls default global text direction, 'rtl' or 'ltr'
+$default-float: left !default;
+$default-opposite: right !default;
+// No need to change this conditional statement, $text-direction variable controls it all.
+@if $text-direction == ltr {
+  $default-float: left;
+  $default-opposite: right;
+} @else {
+  $default-float: right;
+  $default-opposite: left;
+}
+
+// We use these as default colors throughout
+$primary-color: #ee514b !default;
+$secondary-color: #fafafa !default;
+$alert-color: #c60f13 !default;
+$success-color: #5da423 !default;
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius: 3px !default;
+$global-rounded: 1000px !default;
+
+// We use these to control inset shadow shiny edges and depressions.
+$shiny-edge-size: 0 0px 0 !default;
+$shiny-edge-color: rgba(#fff, .5) !default;
+$shiny-edge-active-color: rgba(#000, .2) !default;
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes: true !default;
+$include-print-styles: true !default;
+
+$include-html-grid-classes: $include-html-classes !default;
+$include-html-visibility-classes: $include-html-classes !default;
+$include-html-button-classes: $include-html-classes !default;
+$include-html-form-classes: $include-html-classes !default;
+$include-html-media-classes: $include-html-classes !default;
+$include-html-section-classes: $include-html-classes !default;
+$include-html-reveal-classes: $include-html-classes !default;
+$include-html-alert-classes: $include-html-classes !default;
+$include-html-nav-classes: $include-html-classes !default;
+$include-html-label-classes: $include-html-classes !default;
+$include-html-panel-classes: $include-html-classes !default;
+$include-html-pricing-classes: $include-html-classes !default;
+$include-html-progress-classes: $include-html-classes !default;
+$include-html-magellan-classes: $include-html-classes !default;
+
+//
+// Functions
+//
+
+// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#px)
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+// Creating rems and pixels
+@function remCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1rem;
+}
+
+// Grid Calculation for Percentages
+@function gridCalc($colNumber, $totalColumns) {
+  @return percentage(($colNumber / $totalColumns));
+}
+
+
+//
+// Mixins
+//
+
+// We use this to control border radius.
+@mixin radius($radius:$global-radius) {
+  @if $radius {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+  }
+}
+
+// We use this to create equal side border radius on elements.
+@mixin side-radius($side, $radius) {
+  @include radius(0);
+  @if $side == left {
+    -moz-border-radius-bottomleft: $radius;
+    -moz-border-radius-topleft: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+  }
+  @else if $side == right {
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-bottomright: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+  @else if $side == top {
+    -moz-border-radius-topright: $radius;
+    -moz-border-radius-topleft: $radius;
+    -webkit-border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+  }
+  @else if $side == bottom {
+    -moz-border-radius-bottomright: $radius;
+    -moz-border-radius-bottomleft: $radius;
+    -webkit-border-bottom-right-radius: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+}
+
+// We can control whether or not we have inset shadows edges.
+@mixin inset-shadow($active:true) {
+  -webkit-box-shadow: $shiny-edge-size $shiny-edge-color inset;
+  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+
+  @if $active { &:active {
+    -webkit-box-shadow: $shiny-edge-size $shiny-edge-active-color inset;
+    box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
+}
+
+// We use this to add transitions to elements
+@mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
+  -webkit-transition: $property $speed $ease;
+  -moz-transition: $property $speed $ease;
+  transition: $property $speed $ease;
+}
+
+// We use this to add box-sizing across browser prefixes
+@mixin box-sizing($type:border-box) {
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+}
+
+// We use this to create equalateral triangles
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+  }
+}
+
+// We use this to do clear floats
+@mixin clearfix() {
+  *zoom:1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// Media Queries
+$small-screen: emCalc(768px) !default;
+$medium-screen: emCalc(1280px) !default;
+$large-screen: emCalc(1440px) !default;
+
+$screen: "only screen" !default;
+$small: "only screen and (min-width:"#{$small-screen}")" !default;
+$medium: "only screen and (min-width:"#{$medium-screen}")" !default;
+$large: "only screen and (min-width:"#{$large-screen}")" !default;
+$landscape: "only screen and (orientation: landscape)" !default;
+$portrait: "only screen and (orientation: portrait)" !default;
+
+
+/***********************************************/
+/*                 Typography                  */
+/***********************************************/
+
+/* We use these to control header font styles */
+$header-font-family:                   "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight:                   normal;
+$header-font-style:                    normal;
+$header-font-color:                    #222;
+$header-line-height:                   1.4;
+$header-top-margin:                    .2em;
+$header-bottom-margin:                 .5em;
+$header-text-rendering:                optimizeLegibility;
+
+/* We use these to control header font sizes */
+$h1-font-size:                         emCalc(44px);
+$h2-font-size:                         emCalc(37px);
+$h3-font-size:                         emCalc(27px);
+$h4-font-size:                         emCalc(23px);
+$h5-font-size:                         emCalc(18px);
+$h6-font-size:                         1em;
+
+/* These control how subheaders are styled. */
+$subheader-line-height:                1.4;
+$subheader-font-color:                 lighten($header-font-color, 30%);
+$subheader-font-weight:                300;
+$subheader-top-margin:                 .2em;
+$subheader-bottom-margin:              .5em;
+
+/* A general <small> styling */
+$small-font-size:                      60%;
+$small-font-color:                     lighten($header-font-color, 30%);
+
+/* We use these to style paragraphs */
+$paragraph-font-family:                inherit;
+$paragraph-font-weight:                normal;
+$paragraph-font-size:                  0.875em;
+$paragraph-line-height:                1.6;
+$paragraph-margin-bottom:              emCalc(20px);
+$paragraph-aside-font-size:            emCalc(14px);
+$paragraph-aside-line-height:          1.35;
+$paragraph-aside-font-style:           italic;
+$paragraph-text-rendering:             optimizeLegibility;
+
+/* We use these to style <code> tags */
+$code-color:                           darken($alert-color, 15%);
+$code-font-family:                     Consolas, "Liberation Mono", Courier, monospace;
+$code-font-weight:                     bold;
+
+/* We use these to style anchors */
+$anchor-text-decoration:               none;
+$anchor-font-color:                    $primary-color;
+$anchor-font-color-hover:              darken($primary-color, 5%);
+
+/* We use these to style the <hr> element */
+$hr-border-width:                      1px;
+$hr-border-style:                      solid;
+$hr-border-color:                      #ddd;
+$hr-margin:                            emCalc(20px);
+
+/* We use these to style lists */
+$list-style-position:                  outside;
+$list-side-margin:                     emCalc(18px);
+$definition-list-header-weight:        bold;
+$definition-list-header-margin-bottom: .3em;
+$definition-list-margin-bottom:        emCalc(12px);
+
+/* We use these to style blockquotes */
+$blockquote-font-color:                lighten($header-font-color, 30%);
+$blockquote-padding:                   emCalc(9px) emCalc(20px) 0 emCalc(19px);
+$blockquote-border:                    1px solid #ddd;
+$blockquote-cite-font-size:            emCalc(13px);
+$blockquote-cite-font-color:           lighten($header-font-color, 20%);
+$blockquote-cite-link-color:           $blockquote-cite-font-color;
+
+/* Acronym styles */
+$acronym-underline:                    1px dotted #ddd;
+
+/* We use these to control padding and margin */
+$microformat-padding:                  emCalc(10px) emCalc(12px);
+$microformat-margin:                    0 0 emCalc(20px) 0;
+
+/* We use these to control the border styles */
+$microformat-border-width:             1px;
+$microformat-border-style:             solid;
+$microformat-border-color:             #ddd;
+
+/* We use these to control full name font styles */
+$microformat-fullname-font-weight:     bold;
+$microformat-fullname-font-size:       emCalc(15px);
+
+/* We use this to control the summary font styles */
+$microformat-summary-font-weight:      bold;
+
+/* We use this to control abbr padding */
+$microformat-abbr-padding:             0 emCalc(1px);
+
+/* We use this to control abbr font styles */
+$microformat-abbr-font-weight:         bold;
+$microformat-abbr-font-decoration:     none;
+
+
+/***********************************************/
+/*                  Buttons                    */
+/***********************************************/
+
+/* We use these to build padding for buttons. */
+$button-med:              emCalc(12px);
+$button-tny:              emCalc(7px);
+$button-sml:              emCalc(9px);
+$button-lrg:              emCalc(16px);
+
+/* We use this to control the display property. */
+$button-display:          inline-block;
+$button-margin-bottom:    emCalc(20px);
+
+/* We use these to control button text styles. */
+$button-font-color:       #fff;
+$button-font-color-alt:   #333;
+$button-font-med:         emCalc(16px);
+$button-font-tny:         emCalc(11px);
+$button-font-sml:         emCalc(13px);
+$button-font-lrg:         emCalc(20px);
+$button-font-weight:      normal;
+$button-font-align:       center;
+
+/* We use these to control various hover effects. */
+$button-function-factor:  10%;
+
+/* We use these to control button border styles. */
+$button-border-width:     0px;
+$button-border-style:     solid;
+$button-border-color:     darken($primary-color, $button-function-factor);
+
+/* We use this to set the default radius used throughout the core. */
+$button-radius:           $global-radius;
+
+/* We use this to set default opacity for disabled buttons. */
+$button-disabled-opacity: 0.6;
+
+
+
+/***********************************************/
+/*                 Alert Box                   */
+/***********************************************/
+
+/* We use this to control alert padding. */
+$alert-padding-top:         emCalc(11px);
+$alert-padding-left:        $alert-padding-top;
+$alert-padding-right:       $alert-padding-top + emCalc(10px);
+$alert-padding-bottom:      $alert-padding-top + emCalc(1px);
+
+/* We use these to control text style. */
+$alert-font-weight:         normal;
+$alert-font-size:           emCalc(14px);
+$alert-font-color:          #fff;
+$alert-font-color-alt:      darken($secondary-color, 60%);
+
+/* We use this for close hover effect. */
+$alert-function-factor:     10%;
+
+/* We use these to control border styles. */
+$alert-border-style:        solid;
+$alert-border-width:        1px;
+$alert-border-color:        darken($primary-color, $alert-function-factor);
+$alert-bottom-margin:       22px;
+
+/* We use these to style the close buttons */
+$alert-close-color:         #333;
+$alert-close-position:      emCalc(5px);
+$alert-close-font-size:     emCalc(22px);
+$alert-close-opacity:       0.3;
+$alert-close-opacity-hover: 0.5;
+$alert-close-padding:       5px 4px 4px;
+
+/* We use this to control border radius */
+$alert-radius:              $global-radius;
+
+
+/***********************************************/
+/*                Section                      */
+/***********************************************/
+/* We use these to set padding and hover factor */
+$section-padding:                emCalc(15px);
+$section-function-factor:        10%;
+
+/* These style the titles */
+$section-title-color:            #333;
+$section-title-bg:               #efefef;
+$section-title-bg-active:        darken($section-title-bg, $section-function-factor);
+$section-title-bg-active-tabs:   #fff;
+
+/* Want to control border size, here ya go! */
+$section-border-size:            1px;
+$section-border-style:           solid;
+$section-border-color:           #ccc;
+
+/* Control the color of the background and some size options */
+$section-content-bg:             #fff;
+$section-vertical-nav-min-width: emCalc(200px);
+$section-bottom-margin:          emCalc(20px);
+

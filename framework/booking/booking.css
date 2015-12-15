@@ -1,0 +1,8 @@
+.mt44 { margin-top:44px }
+.mt22 { margin-top:22px }
+.mb44 { margin-bottom:44px }
+.mb22 { margin-bottom:22px }
+
+#est_booking_page_icon {
+  background: url('images/calendar.png') no-repeat;
+}

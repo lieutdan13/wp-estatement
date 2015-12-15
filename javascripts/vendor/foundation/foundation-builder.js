@@ -1,0 +1,16 @@
+// @codekit-prepend "foundation.js";
+// @codekit-append "foundation.alerts.js";
+// @codekit-append "foundation.clearing.js";
+// @codekit-append "foundation.cookie.js";
+// @codekit-append "foundation.dropdown.js";
+// @codekit-append "foundation.forms.js";
+// @codekit-append "foundation.joyride.js";
+// @codekit-append "foundation.js";
+// @codekit-append "foundation.magellan.js";
+// @codekit-append "foundation.orbit.js";
+// @codekit-append "foundation.placeholder.js";
+// @codekit-append "foundation.reveal.js";
+// @codekit-append "foundation.section.js";
+// @codekit-append "foundation.tooltips.js";
+// @codekit-append "foundation.toolbar.js";
+// @codekit-append "index.js";

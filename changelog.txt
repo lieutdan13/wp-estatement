@@ -1,0 +1,445 @@
+/***********************************************/
+/*                Version 4.3                  */
+/***********************************************/
+
+- Slideshow without ids now lists all images
+- button target attribute now set correctly
+- Property lists can now list based on a single user
+- Propertylist shortcode has an added author parameter
+- Better tabbed content responsiveness
+- Resolved a WP All Import and filter page conflict
+- Added offset parameter to propertylist shortcode
+- Included user order preserved in agents page
+- Encoded Google font link for validation
+- Fixed a pagination issue with non-latin caracters
+- Fixed an issue with text based dropdown values
+- Added custom CSS field in theme options
+- Added parameters to the postlist shortcode
+- Added Ids to property table and taxonomy tables
+- Reorganized search page options to make them less error-prone
+
+/***********************************************/
+/*                Version 4.2                  */
+/***********************************************/
+- Fixed a column number bug (mainly for 2 columned propertylists)
+- Marker clicks can now open properties directly
+- Fixed a profile field issue
+- The default blog sidebar is now the correct one.
+- Agent order can be specified on the agents page
+- Advanced search can be shown by default
+- Added default text to the contact field
+- Added the ability to control property excerpt length
+- Fixed image scrolling bug in property slider
+- Added slider to blog page
+- Fixed a default map marker issue
+- Fixed live filter OR type filter issue
+- Added previous and next property links (optional)
+- Removed old custom data from property page
+- Emails now use the blog name and admin email as the "from" info
+- Removed unneeded slider template
+
+/***********************************************/
+/*                Version 4.1                  */
+/***********************************************/
+
+- Added spain as a top country
+- Removed regular prices from pricing widget if there were none
+- Fixed a width issue in map displays
+- Footer image can now be selected
+- Map Advanced search slides up after search
+- Fixed a bug in the featured images of properties
+- Added login page with forgot password flow
+- Added separate logged in/not logged in menu
+- Added foundation 4 rtl support
+- User profile fields can now be added
+- Modified the no_results_page parameter for propertylists to not break pages if not set
+- Empty field icons do not show up in header
+- Added temporary solution to rtl tabs
+- SEO - Conformed with Google Webmaster Tools Structured data testing
+- SEO - Google plus profiles can now be linked to pages
+- Duplicate proximity buy resolved
+- Map optimizations
+- Added login and registration pages
+- Added links to property images on the map
+- Added taxonomy filter restrictions
+- Agent permalink base can now be changed
+- Added geolocation info for properties in the admin
+- Search can now be disabled again in the map
+- Fixed an issue with search field dropdowns
+- Updated Pot files
+- Added the url_slideshow shortcode
+- Added street view options to map shortcode
+- Initial map location can be specified via coordinates
+- Corrected currency issues for PayPal in bookings
+- Better logo typography
+- Fixed a coordinates issues in the default map shortcode
+- Fixed some irregular paddings
+- Added Montenegro to the country list
+- Removed redundant help link for property custom data
+- Shortcodes are now executed in the title shortcode
+- Added excerpt option into propertylist shortcode
+- Added excerptto property list page
+- The featured ribbon can now be changed in the settings
+- Buddypress integration
+- Fixed a property sorting bug
+
+/***********************************************/
+/*                  Version 4                  */
+/***********************************************/
+
+- Completely revamped maps to be much nicer
+- Fixed a sidebar text color issue
+- Fixed an unlikely import bug for external
+  importers
+- Made sure drafts don't show up on the map
+- Added the option to disable the agent contact
+  widget links to the agent pages
+- Added background alignment to the theme
+  customizer
+- Fixed button primary color hover
+- Added horizontal and vertical map offset
+- Added author option to properties
+- Added some missing admin strings to
+  translation
+- Added some missing front end string to
+  translation
+- Added horizontal and vertical tiling options
+  to the site background
+- Added support for full width logos
+- Fixed a visual form builder compatibility
+  issue
+- Content can now be added to the property list
+  template
+- Menu positions will now not overwrite any
+  plugins
+- Custom taxonomies can now be used in the
+  property list settings
+- Slightly better automatic zoom controls
+- Added drag re-search to map template
+- Added initial zoom control to map page
+- Image IDs can now be specified for the main
+  slider on the property page
+- Enabled taxonomies in the propertylist
+  shortcode
+- Fixed a taxonomy bug in the advanced map
+  search
+- Enabled image specification in search
+  slider
+- Fixed a map custom field issue
+- Added custom taxonomies to the featured
+  properties module
+- Fixed a search terms issue in the search
+- Fixed a text size bug in lists
+- Fixed a field duplication issue
+- Added a number of parameters to the slideshow
+  shortcode
+- Added decimal and thousand separator options
+- Added the option to select how properties are
+  ordered on list and filter pages
+- The print icon can now be specified
+- Added custom data shortcode
+- Added slider page template
+- Seasonal prices can now be named
+- Fixed a price display issue in the price
+  widget
+- Added the coord property to maps for greater
+  coordinate accuracy
+- HTML can now be added to custom fields
+- Pagination now available in the filter
+- Phone number and email can be shown/hidden
+  on agent pages and contact widgets
+- Added favicon and apple touch icon
+- Agents without properties can be listed
+- Filter title option has been added
+- Hide property from map option has been added
+- Map marker saving issue now fixed
+- Better RTL Support
+- Resolved a marker content error
+- Added a default blog sidebar
+- Modified title in the header for SEO compatibility
+- Fixed an issue with the agent page not displaying
+  properties
+- Fixed a map issue where properties weren't displayed
+  if a search form was also used
+- Added google plus contact widget icons
+- Social links in contact widget open in new window
+- Added google plus to users
+- WooCommerce buttons now work (excluded from CustomSubmit)
+- Fix for IE8 addEventListener issue
+- Added support for sliders in header
+- Fixed agent page pagination
+- Added Twitter details
+- Added no_results_page parameter to the propertylist shortcode
+- Fixed form label misalignment on mobile devices
+- Added spam protection to the contact form
+- Added the ability to list agents on the agents page based on ID
+- Search pull animation added to half-page search as well
+- Fixed empty property shown on some formats
+
+/***********************************************/
+/*                Version 3.1.1                */
+/***********************************************/
+
+- Quick fix of array format which only works
+  PHP 5.4 and up.
+
+/***********************************************/
+/*                 Version 3.1                 */
+/***********************************************/
+
+- Fixed an error in the search filter system
+- Fixed an issue where empty values sometimes
+  show up
+- Fixed a bug where only 5 pages were pulled when
+  selecting a search results page
+- Added pagination to agent page
+- Fixed a fringe case curl issue
+- Fixed a live filter issue with spaces
+- Admins can now be excluded from agent lists
+- Responsiveness imporovements in IDX Results
+- Agent list now links out to the single agent
+  pages
+- Added and/or filters to the live filter
+- Got rid of a menu conflict with Contact Form 7
+- 4 properties can now be shown next to each
+  other using the propertylist shortcode
+- Header phone number is now a tel link
+- IE filter issue is now fixed
+
+/***********************************************/
+/*                 Version 3.0                 */
+/***********************************************/
+
+- Bookable properties are now supported
+- Added Booking widget
+- Added pricing widget
+- Added Booking page template
+- Added paypal gateway to bookings
+- Fixed a custom taxonomy creation bug
+- Official support for WP User Avatar
+- Official support for WordPress SEO by Yoast
+
+/***********************************************/
+/*                 Version 2.7                 */
+/***********************************************/
+
+- Fixed a full page map centering bug
+- Fixed a full page map slider bug
+- Custom fields and taxonomies are now fully
+  translatable with WPML
+- Added the option to disable search altogether
+  from maps
+- CSS Support for dsIDXPress
+- Added a map widget
+- Fixed a bug affecting range live filters
+- Contact form fields are now trasnslatable
+- Added telephone field to contact form
+- Property IDs can now be specified for the
+  featured module
+
+/***********************************************/
+/*                 Version 2.6                 */
+/***********************************************/
+
+- Fixed stuck options page bug
+- Dragging now disabled on maps on touch devices
+- Fixed a color bug due to a missing JS file
+- Fixed a footer color bug
+- Values can now be targeted via CSS
+- Button hovercolor now works with gradients
+- Added read more text option to theme customizer
+- Permalink for properties can now be changed
+- Fixed compatibility issue with MyMail plugin
+- Removed search button from live filter
+- Sidebar is now visible on mobile devices under
+  the content. It can also be hidden in the theme
+  customizer
+- Footer sticks to the bottom on smaller pages
+- Fixed Twitter Widget bug
+
+/***********************************************/
+/*                 Version 2.5                 */
+/***********************************************/
+
+- Live filter template
+- Added mailto and tel links to agent widget
+- Added mailto and tel links to contact widget
+- Proximity options can now be completely
+  customized
+- Contact success message can now be modified in
+  the theme customizer
+- Repositioned the contact message so print
+  button doesn't overlap
+- Added the ability to add/modify custom taxonomies
+- Completely rewritten custom field and taxonomy
+  display system
+- Better custom field/taxonomy ordering options
+- More powerful propertylist shortcode options
+- Better property details widget ordering options
+- Custom map marker icons for each property
+- Searches can now be directed to property listings
+- Added a couple of missing strings to the
+  translatable strings
+- Rewritten, more modular search
+- Search can now be placed in listings pages
+- Added search widget
+- Added fax field to contact widget
+- Added background attachment property
+- Fixed some foundation 4 tab bugs
+- Property list can now be hidden on agent list
+  template
+
+/***********************************************/
+/*                 Version 2.4                 */
+/***********************************************/
+
+- Option to show the full content for on the blog
+  page for posts
+- Quotes are now escaped (so can be used) in the
+  map error message
+- New agent selector with multiple agent options
+- Fixed slideout menu hover error on map pages
+- Added multiple agent support to agent contact
+  widget
+- Redesigned agent contact widget
+- Added advanced search to the map
+- Added an agent list template
+- Property subtitle is now customizable
+- Added width and hovercolor parameter to button
+  shortcode
+- Active accordion title is not primary colored
+- Added help section with video to custom fields
+  section
+
+/***********************************************/
+/*                 Version 2.3                 */
+/***********************************************/
+
+- Property page sidebar now shows up as a
+  selectable option in property settings
+- Made sure empty details don't show up
+- Fixed a no custom fields error message in the
+  custom fields widget
+- Made CURL the primary way to retrieve data and
+  file_get_contents the fallback
+- Selectable formatting for custom fields
+- Slight adjustment to image widths in slider to
+  fix non 100% image problems
+- Properly aligned propertylists with
+  non 3 divisable items
+- Featured item details can now be selected
+- Price field is now built in.
+- Fixed a bug in the property details widget when
+  all fields are set to show
+- Taxonomy archive description slightly modified to
+  look nicer
+- No search results message for maps can be turned
+  off
+- Single property page ribbon can now take custom
+  field data
+- Added basic support for agents
+
+/***********************************************/
+/*                 Version 2.2                 */
+/***********************************************/
+
+- Widgetized property details and contact form
+- Automatic formating of numbers
+- Option added to condensed location into one
+  field in the sidebar widget
+- Added condensed location into listing pages
+- Added condensed location into the properylist
+  shortcode
+- Footer and Footer bar can now be removed
+- Added ordering capabilities to the propertylist
+  shortcode
+- Sliders in hidden tabs now work
+- Featured item slider is now jQuery based to
+  sidestep some Chrome background animation bugs
+
+/***********************************************/
+/*                 Version 2.1                 */
+/***********************************************/
+
+- Fixes for greek language output
+- Modified the default suffix for acres to include
+  a space
+- Modified picture quality function to be php 5.2
+  compatible
+- Renamed some of the default custom fields to
+  prevent data duplication
+- Twitter feed modifications to support non
+  latin characters
+- Made some fields undeletable fields. These can
+  still be renamed but can not be deleted.
+- Excluded location data from the details list,
+  it is now only under location.
+- Added description and title to custom taxonomy
+  archives
+
+/***********************************************/
+/*                 Version 2.0                 */
+/***********************************************/
+
+- Properties icon bug for retina devices fixed
+- Added editable custom fields
+- Custom fields can be added to the
+  propertylist shortcode
+- Custom fields can now be selected for listings
+- Removed unit options
+- Added option to add comments to properties
+- Added lightbox galleries
+
+/***********************************************/
+/*                 Version 1.3                 */
+/***********************************************/
+
+- No results message for the map page can now be
+  specified
+- Map can be set to automatically start at the
+  user's location
+- New loading animation for loading properties on
+  the map
+- Fixed a bug related to special characters (eg:
+  greek letters )
+- Added .po files for language translations
+- Added non-full page option to map page
+- Added non-full page option to search page
+
+/***********************************************/
+/*                 Version 1.2                 */
+/***********************************************/
+
+We've focused on map functions in this update,
+bringing numerous additions to this functionality.
+
+- Added latitude and longitude fields to the
+  properties' settings
+- Added map type selector to the map page settings
+- Added a default map location option
+- Better map experience on small screens
+- New map marker icon
+- Customizable map marker icon
+- Search is performed on load for the default
+  map location
+- Added some additional inline documentation
+
+/***********************************************/
+/*                 Version 1.1                 */
+/***********************************************/
+
+This release adds a full page map based proximity
+search to the theme. Aside from this feature,
+only minor modifications have been made.
+
+- Added full page map search
+- Added the include and columns parameters to the
+  propertylist shortcode
+- Added Google API key settings to the customizer
+
+
+/***********************************************/
+/*                 Version 1.0                 */
+/***********************************************/
+
+Initial release of theme

@@ -1,0 +1,32 @@
+/* TEAM */
+
+Lead Developer: Daniel Pataki
+Site: http://bonsaished.com
+Twitter: danielpataki
+Location: Budapest, Hungary
+
+Testing and Support: Viktoria Makra
+Site: http://bonsaished.com
+Twitter: bonsaished
+Location: Budapest, Hungary
+
+Testing and Support: Laszlo Farkas
+Site: http://bonsaished.com
+Twitter: bonsaished
+Location: Budapest, Hungary
+
+
+/* THANKS */
+
+
+Revaxarts Themes: http://revaxarts-themes.com/documenter/
+WordPress: http://wordpress.org
+Sprintly: https://sprint.ly/
+xColor: http://www.xarg.org/project/jquery-color-plugin-xcolor/
+phpColors: http://mexitek.github.com/phpColors/
+Isotope: http://isotope.metafizzy.co/
+jPlayer: http://www.jplayer.org/
+CodeKit: http://incident57.com/codekit/
+Less CSS: http://lesscss.org
+Foundation: http://foundation.zurb.com/
+Coda 2: http://panic.com/coda/

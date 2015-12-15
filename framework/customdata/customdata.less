@@ -1,0 +1,119 @@
+@primary: #ef625d;
+@error: #ef625d;
+@success: #7dde82;
+
+#est_custom_fields_page_icon {
+	background: url( 'images/page_icon.png' ) no-repeat;
+}
+
+.submit.primary {
+	background: @primary;
+	color:#fff;
+	text-shadow:1px 1px 1px rgba(0,0,0,0.1);
+	border:1px solid @primary - #111
+}
+
+.est_error {
+	color: #fff;
+	background:@error;
+	border-top:5px solid @error;
+	width:400px;
+	padding:22px;
+	&.full {
+		width:100%;
+		box-sizing: border-box;
+	}
+}
+
+.est_success {
+	color: #fff;
+	background:@success;
+	border-top:5px solid @success;
+	width:400px;
+	padding:11px 22px;
+	&.full {
+		width:100%;
+		box-sizing: border-box;
+	}
+}
+
+#est_header {
+	margin:0 0 22px 0;
+}
+
+
+.est-form {
+	background:#F5F5F5;
+	border-top:5px solid @primary;
+	width:400px;
+	padding:22px;
+	.checkboxes {
+		line-height:28px;
+	}
+	input, select {
+		padding:6px;
+		width:276px;
+		position: relative;
+		top:1px;
+	}
+	input[type=checkbox] {
+		width:auto;
+		margin:0 5px 0 0;
+	}
+	.options input {
+		width:135px;
+		&:first-child {
+			margin:0px;
+		}
+	}
+	label {
+		width:92px;
+		display:inline-block;
+		padding-right:22px;
+		float:left;
+		position:relative;
+		top:8px;
+		&.smalltop {
+			top:5px;
+		}
+		&.noformat {
+			top:0px;
+			width:auto;
+			padding:0px;
+			float:none;
+		}
+	}
+	.control {
+		margin-left:114px;
+	}
+	.form-row {
+		margin:11px 0 0 0;
+		&:first-child {
+			margin:0px;
+		}
+		&.submit-row {
+			text-align: right;
+			margin-top:22px;
+		}
+	}
+	input.submit {
+		width: auto;
+	}
+
+}
+
+
+#open-advanced-options {
+	cursor: pointer;
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	#est_custom_fields_page_icon {
+		background: url( 'images/page_icon@2x.png' ) no-repeat;
+		background-size:32px 32px
+	}
+}
+
+
+

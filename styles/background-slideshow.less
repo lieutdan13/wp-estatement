@@ -1,0 +1,39 @@
+.cb-slideshow,
+.cb-slideshow:after,
+.cb-slideshow-initial,
+.cb-slideshow-initial:after
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+.cb-slideshow:after,
+.cb-slideshow-initial:after {
+    content: '';
+}
+.cb-slideshow li span,
+.cb-slideshow-initial li span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index: 0;
+	-webkit-backface-visibility: hidden;
+}
+
+.cb-slideshow-initial li span {
+	opacity:1;
+}
+/* Show at least something when animations not supported */
+.no-cssanimations .cb-slideshow li span{
+	opacity: 1;
+}
