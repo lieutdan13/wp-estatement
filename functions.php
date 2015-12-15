@@ -492,6 +492,7 @@ include( 'framework/widgets/PricingWidget.class.php' );
 include( 'framework/template-options/bshOptions.class.php' );
 include( 'framework/template-options/bshPostOptions.class.php' );
 include( 'framework/template-options/bshBookingOptions.class.php' );
+include( 'framework/template-options/bshCustomListingPageOptions.class.php' );
 include( 'framework/template-options/bshListingPageOptions.class.php' );
 include( 'framework/template-options/bshPropertyOptions.class.php' );
 include( 'framework/template-options/bshDefaultOptions.class.php' );
@@ -1171,14 +1172,20 @@ function show_property_detail_table( $shown_fields, $classes = 'mb22' ) {
 		foreach( $shown_fields as $field ) :
 		$field['value'] = trim( $field['value'] );
 		if( $field['value'] != '' ) :
+                    $multi_value = explode(',', $field['value']);
+                    if ( count( $multi_value ) > 1) {
+                        $display_value = implode("<br/>", $multi_value);
+                    } else {
+                        $display_value = $field['value'];
+                    }
 		?>
 			<tr>
 				<?php if( is_rtl() ) : ?>
-					<td class="value"><?php echo $field['value'] ?></td>
+					<td class="value"><?php echo $display_value ?></td>
 					<td class="name"><?php echo $field['name'] ?></td>
 				<?php else : ?>
 					<td class="name"><?php echo $field['name'] ?></td>
-					<td class="value"><?php echo $field['value'] ?></td>
+					<td class="value"><?php echo $display_value ?></td>
 				<?php endif ?>
 			</tr>
 		<?php endif ?>
@@ -2294,6 +2301,10 @@ function bsh_get_price( $price = 0, $currency = '', $currency_position = '' ) {
 	return $display;
 }
 
+function bsh_get_numeric_digits( $number ) {
+        return ceil(log10($number));
+}
+
 function bsh_get_area( $size, $unit_type = 'area_unit' ) {
 	$unit = get_theme_mod( $unit_type );
 
@@ -2341,6 +2352,7 @@ function bsh_get_detail_dropdown_options( $detail, $current = '', $all = '' ) {
 	$data = $customdata[$detail]['options'];
 
 	$values = $wpdb->get_col( "SELECT DISTINCT( meta_value ) FROM $wpdb->postmeta WHERE meta_key = '$detail' AND post_ID IN ( SELECT ID FROM $wpdb->posts WHERE post_status = 'publish' ) " );
+        
 	if( $customdata[$detail]['format'] == 'text' && !empty( $data) ) {
 		$newvalues = array();
 		foreach( $data as $item ) {
@@ -2353,7 +2365,7 @@ function bsh_get_detail_dropdown_options( $detail, $current = '', $all = '' ) {
 	else {
 		sort( $values );
 	}
-
+        
 	$options = array();
 
 	if( !empty( $all ) ) {
@@ -2362,11 +2374,11 @@ function bsh_get_detail_dropdown_options( $detail, $current = '', $all = '' ) {
 
 	foreach( $values as $value => $name ) {
 
-
-		if( $customdata[$detail]['format'] == 'text' ) {
+                //DAN CHANGES - Commenting this fixes a bug where a dropdown for custom fields is not working on search pages
+		/*if( $customdata[$detail]['format'] == 'text' ) {
 			$value = $name;
-		}
-
+		}*/
+                
 		if( !empty( $value ) ) {
 			$selected = ( $current == $value ) ? 'selected="selected"' : '';
 			$options[] = '<option ' . $selected . ' value="' . $value . '">' . str_replace( array('<', '>'), array('&lt;', '&gt;'), $name) . '</option>';
@@ -2509,8 +2521,14 @@ function bsh_get_search_field_slider( $key, $detail, $args = array() ) {
 	$min = est_customdata_value( $key, $range['min'] );
 	$max = est_customdata_value( $key, $range['max'] );
 
-	$range['min'] = floor( $range['min'] );
-	$range['max'] = ceil( $range['max'] );
+        //START DAN CHANGES - Added min/max_digits_round so that the price slider rounds to the nearest 10, fixing a bug
+        $min_digits_round = bsh_get_numeric_digits( $range['min'] ) > 1 ? 10 : 1;
+        $max_digits_round = bsh_get_numeric_digits( $range['max'] ) > 1 ? 10 : 1;
+	$range['min'] = floor( $range['min'] / $min_digits_round ) * $min_digits_round ;
+	$range['max'] = ceil( $range['max'] / $max_digits_round ) * $max_digits_round;
+	//$range['min'] = floor( $range['min'] );
+	//$range['max'] = ceil( $range['max'] );
+        //END DAN CHANGES
 
 	$current_min = ( !empty( $_GET[$key]['min'] ) ) ? $_GET[$key]['min'] : '';
 	$current_max = ( !empty( $_GET[$key]['max'] ) ) ? $_GET[$key]['max'] : '';
@@ -4770,4 +4788,62 @@ function est_custom_css() {
 	echo '</style>';
 }
 
+//START DAN CHANGES
+function is_property_a_complex( $post_id = 0 ) {
+        return property_has_taxonomy_type( $post_id, 'type', 'apartment-complex' );
+}
+
+function is_property_a_building( $post_id = 0 ) {
+        return property_has_taxonomy_type( $post_id, 'type', 'apartment-building' );
+}
+
+function is_property_a_floorplan( $post_id = 0 ) {
+        return property_has_taxonomy_type( $post_id, 'type', 'apartment-floorplan' );
+}
+
+function property_has_taxonomy_type( $post_id = 0, $taxonomy = '', $taxonomy_types = '' ) {
+        if (!$post_id) {
+                $post_id = get_the_ID();
+        }
+        if ( !is_array($taxonomy_types) ) {
+                $taxonomy_types = array( $taxonomy_types );
+        }
+        $terms = wp_get_post_terms($post_id, $taxonomy, true);
+        foreach ( $terms as $term ) {
+                if ( $term->taxonomy == $taxonomy && in_array( $term->slug, $taxonomy_types ) ) {
+                        return true;
+                }
+        }
+}
+
+function get_building( $post_id = 0 ) {
+        if (!$post_id) {
+                $post_id = get_the_ID();
+        }
+        $property_names = wp_get_post_terms($post_id, 'property_name');
+        $building = NULL;
+        foreach ( $property_names as $property ) {
+                //If this property taxonomy has a parent, then this should be the building
+                if ( $property->parent ) {
+                        return $property;
+                }
+                $building = $property;
+        }
+        return $building;
+}
+
+function show_breadcrumb ($post_id = 0) {
+        if (!$post_id) {
+                $post_id = get_the_ID();
+        }
+        echo '<div class="breadcrumb-container" id="breadcrumb-container">';
+        echo '<div class="breadcrumb"><a href="/property-listing">Property Listing</a></div> &gt; ';
+        if (is_property_a_floorplan($post_id)) {
+                $building = get_building();
+                echo '<div class="breadcrumb"><a href="/property/' . $building->slug . '">' . $building->name . '</a></div> &gt; ';
+        }
+        echo '<div class="breadcrumb-main">' . the_title( '', '', false ) . '</div>';
+        echo '</div>';
+}
+//END DAN CHANGES
 ?>

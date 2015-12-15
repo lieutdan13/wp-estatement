@@ -4282,7 +4282,7 @@ h3#reply-title {
 /***********************************************/
 /*              Smaller than iPad              */
 /***********************************************/
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .section-container.tabs section .title {
     position: Relative;
     left: 0px !important;

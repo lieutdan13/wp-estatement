@@ -361,6 +361,8 @@ function mapOffset(offsetx,offsety) {
 			}
 
 			var form_data = jQuery('#map-page-form').serialize();
+                        console.log(estAjax.ajaxurl);
+                        console.log(form_data);
 
 			jQuery.ajax({
 				url: estAjax.ajaxurl,

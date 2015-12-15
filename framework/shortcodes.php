@@ -715,8 +715,8 @@ function bsh_shortcode_postlist( $args ) {
 		'post_type'      => $post_type,
 		'post_status'    => $post_status,
 		'posts_per_page' => $count,
-		'orderby'        => $oderby,
-		'order'        => $oder,
+		'orderby'        => $orderby,
+		'order'        => $order,
 	);
 
 	if( !empty( $category_name ) ) {
@@ -900,7 +900,7 @@ function bsh_shortcode_propertylist( $args, $content ) {
 		'post_type'       => 'property',
 		'posts_per_page'  => $count,
 		'orderby'         => $orderby,
-		'order'           => 'order'
+		'order'           => $order
 	);
 
 	if( !empty( $author ) ) {

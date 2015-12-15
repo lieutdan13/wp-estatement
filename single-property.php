@@ -11,9 +11,13 @@
 
 				<?php if( bsh_show_title() ) : ?>
 					<div class='columns large-12 small-12 mb22'>
+                                        <?php if ( property_has_taxonomy_type( 0, 'type', array( 'apartment-building', 'apartment-floorplan', 'apartment-complex' ) ) ) {
+                                                show_breadcrumb();
+                                        } else { ?>
 						<div class="page-title">
-							<?php echo do_shortcode( '[title icon="home"]' . the_title( '', '', false ) . '[/title]' ); ?>
+							<?php echo do_shortcode( '[title icon="none"]' . the_title( '', '', false ) . '[/title]' ); ?>
 						</div>
+                                        <?php } ?>
 					</div>
 				<?php endif ?>
 

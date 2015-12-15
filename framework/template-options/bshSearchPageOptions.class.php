@@ -79,9 +79,9 @@ class bshSearchPageOptions extends bshOptions {
 									'meta_query'  => array(
 										array(
 											'key' => '_wp_page_template',
-											'value' => 'template-bshListingPage.php',
-											'compare' => '='
-										)
+											'value' => array('template-bshListingPage.php','template-bshCustomListingPage.php',),
+											'compare' => 'IN'
+										),
 	        						)
 	        					));
 

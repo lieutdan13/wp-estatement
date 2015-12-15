@@ -16,6 +16,24 @@ while( have_posts() ) : the_post();
 ?>
 
 <div class='row mt44'>
+	<div class='large-4 small-12 columns <?php echo $class_filter ?>' id='siteSidebar'>
+		<form class='custom inContentSearch' id='filterPageSearch' data-type='<?php echo $filter_type ?>'>
+			<?php
+				$title = get_post_meta( $post->ID, '_est_search_title', true );
+				if( !empty( $title ) ) :
+			?>
+			<div class='searchTitle'>
+				<div class='title'><?php echo $title ?></div>
+			</div>
+			<?php endif ?>
+			<?php
+				est_vertical_search( $details, array( 'sliders' => false ) );
+			?>
+		</form>
+
+		<?php dynamic_sidebar( bsh_get_sidebar() ) ?>
+
+	</div>
 	<div class='large-8 small-12 columns <?php echo $class_content ?>'>
 		<div id='siteContent' class='nopadding nobgcolor'>
 			<div id='filterNoResults' style='display:none'>
@@ -99,24 +117,6 @@ while( have_posts() ) : the_post();
 				<?php get_filter_content( $args ); ?>
 			</div>
 		</div>
-	</div>
-	<div class='large-4 small-12 columns <?php echo $class_filter ?>' id='siteSidebar'>
-		<form class='custom inContentSearch' id='filterPageSearch' data-type='<?php echo $filter_type ?>'>
-			<?php
-				$title = get_post_meta( $post->ID, '_est_search_title', true );
-				if( !empty( $title ) ) :
-			?>
-			<div class='searchTitle'>
-				<div class='title'><?php echo $title ?></div>
-			</div>
-			<?php endif ?>
-			<?php
-				est_vertical_search( $details, array( 'sliders' => false ) );
-			?>
-		</form>
-
-		<?php dynamic_sidebar( bsh_get_sidebar() ) ?>
-
 	</div>
 
 

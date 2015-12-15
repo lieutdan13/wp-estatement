@@ -166,7 +166,7 @@ $card_columns = ( empty( $card_columns ) ) ? 3 : (int) $card_columns;
 					else {
 						$sort_type = get_post_meta( $post->ID, '_est_sort_type', true );
 						$sort_type = ( empty( $sort_type ) ) ? 'meta_value' : $sort_type;
-						$args['orderby'] = $sort_type;
+						$args['orderby'] = $sort_type . " title id";
 						$args['meta_key'] = $orderby;
 					}
 

@@ -50,6 +50,7 @@ class bshMapWidget extends WP_Widget {
 			'type'               => 'ROADMAP',
 			'zoom'               => '14',
 			'marker'             => 'yes',
+                        'directions_button'  => 'no',
 			'height'             => '250px',
 		);
 		$values = wp_parse_args( $instance, $defaults );
@@ -116,6 +117,24 @@ class bshMapWidget extends WP_Widget {
         	</label>
         </p>
 
+        <p>
+        	<label for='<?php echo $this->get_field_id('directions_button'); ?>'>
+        		<?php _e( 'Directions Button:', THEMENAME ); ?><br>
+        		<?php
+					$choices = array(
+						'yes' => 'Yes',
+						'no' => 'No',
+					)
+        		?>
+        			<?php
+        				foreach( $choices as $value => $name ) :
+						$checked = ( $values['directions_button'] == $value OR ( empty( $values['directions_button'] ) AND $value == 'yes' ) ) ? 'checked="checked"' : ''
+        			?>
+						<input type='radio' <?php echo $checked ?> id='<?php echo $this->get_field_id( 'directions_button' ); ?>-<?php echo $value ?>' name='<?php echo $this->get_field_name( 'directions_button' ); ?>' value='<?php echo $value ?>'> <label for='<?php echo $this->get_field_id( 'directions_button' ); ?>-<?php echo $value ?>'><?php echo $name ?></label><br>
+					<?php endforeach ?>
+        	</label>
+        </p>
+
 
         <p>
         	<label for='<?php echo $this->get_field_id('zoom'); ?>'>
@@ -176,9 +195,15 @@ class bshMapWidget extends WP_Widget {
 
 		if( !empty( $coord ) ) {
 			echo do_shortcode( '[map coord="' . $coord . '" zoom="' . $instance['zoom'] . '" type="' . $instance['type'] . '" marker="' . $instance['marker'] . '" height="' . $instance['height'] . '"]' );
+                        if ( $instance['directions_button'] == 'yes' ) {
+                                echo do_shortcode( '[button url="https://maps.google.com/?q=' . $coord . '" radius="0px"]Get Directions[/button]');
+                        }
 		}
 		else {
 			echo do_shortcode( '[map location="' . $location . '" zoom="' . $instance['zoom'] . '" type="' . $instance['type'] . '" marker="' . $instance['marker'] . '" height="' . $instance['height'] . '"]' );
+                        if ( $instance['directions_button'] == 'yes' ) {
+                                echo do_shortcode( '[button url="https://maps.google.com/?q=' . $location . '" radius="0px"]Get Directions[/button]');
+                        }
 		}
 		echo $args['after_widget'];
     }
