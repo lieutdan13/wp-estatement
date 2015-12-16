@@ -180,6 +180,6 @@ $rtl = ( is_rtl() ) ? 'lang="ar" dir="rtl"' : 'lang="en"';
 	}
 ?>
 
-<?php if( substr_count( $template, 'template-bshSearchPage.php' ) == 0 AND substr_count( $template, 'template-bshMapPage.php' ) == 0  ) : ?>
+<?php if( isset($template) AND substr_count( $template, 'template-bshSearchPage.php' ) == 0 AND substr_count( $template, 'template-bshMapPage.php' ) == 0  ) : ?>
 <?php get_template_part( 'module', 'featured' ) ?>
 <?php endif ?>

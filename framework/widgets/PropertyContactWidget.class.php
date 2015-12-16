@@ -52,7 +52,6 @@ class bshPropertyContactWidget extends WP_Widget {
 
 		);
 		$values = wp_parse_args( $instance, $defaults );
-        $image  = new WidgetImageField( $this, $values['image'] );
 
 		?>
         <p>

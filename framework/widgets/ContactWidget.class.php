@@ -117,7 +117,7 @@ class bshContactWidget extends WP_Widget {
         <p>
         	<label for='<?php echo $this->get_field_id( 'google_link' ); ?>'>
         		<?php _e( 'Google Plus Link:', THEMENAME ); ?>
-        		<input class='widefat' id='<?php echo $this->get_field_id( 'google_link' ); ?>' name='<?php echo $this->get_field_name( 'google_link' ); ?>' type='text' value='<?php echo $values['google_link']; ?>' />
+        		<input class='widefat' id='<?php echo $this->get_field_id( 'google_link' ); ?>' name='<?php echo $this->get_field_name( 'google_link' ); ?>' type='text' value='<?php echo !empty( $values['google_link'] ) ? $values['google_link'] : ""; ?>' />
         	</label>
         </p>
 

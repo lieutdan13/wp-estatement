@@ -95,7 +95,7 @@ class bshPropertyDetailsWidget extends WP_Widget {
         <p>
         	<label for='<?php echo $this->get_field_id('single_field_address_order'); ?>'>
         		<?php _e( 'Position of Location Field:', THEMENAME ); ?>
-        		<input class='widefat' id='<?php echo $this->get_field_id( 'single_field_address_order' ); ?>' name='<?php echo $this->get_field_name( 'single_field_address_order' ); ?>' type='text' value='<?php echo $values['single_field_address_order']; ?>' />
+        		<input class='widefat' id='<?php echo $this->get_field_id( 'single_field_address_order' ); ?>' name='<?php echo $this->get_field_name( 'single_field_address_order' ); ?>' type='text' value='<?php echo !empty( $values['single_field_address_order'] ) ? $values['single_field_address_order'] : ''; ?>' />
         	</label>
         </p>
 

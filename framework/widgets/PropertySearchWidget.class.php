@@ -56,7 +56,6 @@ class bshPropertySearchWidget extends WP_Widget {
 			'search_page'        => 'default'
 		);
 		$values = wp_parse_args( $instance, $defaults );
-        $image  = new WidgetImageField( $this, $values['image'] );
 
 		?>
 
@@ -109,12 +108,11 @@ class bshPropertySearchWidget extends WP_Widget {
 					$choices[$page->post_title] = $page->ID;
 				}
 
-				$current = get_post_meta( $post->ID, '_est_search_page', true );
 			?><br>
 			<select id='<?php echo $this->get_field_id( 'search_page' ); ?>' name='<?php echo $this->get_field_name( 'search_page' ); ?>'>
 				<?php
 					foreach( $choices as $name => $value ) :
-					$selected = ( $instance['search_page'] == $value  ) ? 'selected="selected"' : '';
+					$selected = ( isset( $instance['search_page'] ) AND $instance['search_page'] == $value  ) ? 'selected="selected"' : '';
 				?>
 				<option value='<?php echo $value ?>' <?php echo $selected ?>>
 				<?php echo $name ?>
@@ -146,7 +144,6 @@ class bshPropertySearchWidget extends WP_Widget {
 				$output = 'names'; // or objects
 				$operator = 'and'; // 'and' or 'or'
 				$taxonomies = get_option( 'est_taxonomies' );
-				$selection = get_post_meta( $post->ID, '_est_taxonomies', true );
 				?>
 
 
@@ -184,7 +181,7 @@ class bshPropertySearchWidget extends WP_Widget {
         						'text' => __( 'Text Field', THEMENAME ),
         					);
         					foreach( $fields as $field => $name ) {
-        						$selected = ( $instance['est_taxonomies'][$taxonomy]['field'] == $field ) ? 'selected="selected"' : '';
+        						$selected = ( isset( $instance['est_taxonomies'][$taxonomy]['field'] ) AND $instance['est_taxonomies'][$taxonomy]['field'] == $field ) ? 'selected="selected"' : '';
 	        						echo '<option ' . $selected . ' value="' . $field . '">' . $name . '</option>';
         					}
         				?>
@@ -213,7 +210,6 @@ class bshPropertySearchWidget extends WP_Widget {
 
 			<?php
 				$details = get_option( 'est_customdata' );
-				$selection = get_post_meta( $post->ID, '_est_customdatas', true );
 				?>
 
 				<table width='100%'>
@@ -249,7 +245,7 @@ class bshPropertySearchWidget extends WP_Widget {
         						'text' => __( 'Text Field', THEMENAME ),
         					);
         					foreach( $fields as $field => $name ) {
-        						$selected = ( $instance['est_customdata'][$key]['field'] == $field ) ? 'selected="selected"' : '';
+        						$selected = ( !empty(  $instance['est_customdata'][$key]['field'] ) AND $instance['est_customdata'][$key]['field'] == $field ) ? 'selected="selected"' : '';
 	        						echo '<option ' . $selected . ' value="' . $field . '">' . $name . '</option>';
         					}
         				?>

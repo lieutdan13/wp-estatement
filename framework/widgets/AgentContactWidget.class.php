@@ -68,7 +68,7 @@ class bshAgentContactWidget extends WP_Widget {
         <p>
         	<label>
         		<?php _e( 'Show User Phone:', THEMENAME ); ?><br>
-        		<?php $checked = ( $values['show_phone'] == 'yes' ) ? 'checked="checked"' : '' ?>
+        		<?php $checked = ( isset( $values['show_phone'] ) AND $values['show_phone'] == 'yes' ) ? 'checked="checked"' : '' ?>
         		<input <?php echo $checked ?> type='checkbox' id='<?php echo $this->get_field_id( 'show_phone' ); ?>' name='<?php echo $this->get_field_name( 'show_phone' ); ?>' value='yes' /><label for='<?php echo $this->get_field_id( 'show_phone' ); ?>'> <?php _e( 'Show agent\'s phone number', THEMENAME ) ?></label>
         	</label>
         </p>
@@ -76,7 +76,7 @@ class bshAgentContactWidget extends WP_Widget {
         <p>
         	<label>
         		<?php _e( 'Show User Email:', THEMENAME ); ?><br>
-        		<?php $checked = ( $values['show_email'] == 'yes' ) ? 'checked="checked"' : '' ?>
+        		<?php $checked = ( isset( $values['show_email'] ) AND $values['show_email'] == 'yes' ) ? 'checked="checked"' : '' ?>
         		<input <?php echo $checked ?> type='checkbox' id='<?php echo $this->get_field_id( 'show_email' ); ?>' name='<?php echo $this->get_field_name( 'show_email' ); ?>' value='yes' /><label for='<?php echo $this->get_field_id( 'show_email' ); ?>'> <?php _e( 'Show agent\'s email address', THEMENAME ) ?></label>
         	</label>
         </p>
@@ -85,7 +85,7 @@ class bshAgentContactWidget extends WP_Widget {
         <p>
         	<label>
         		<?php _e( 'Link to Agent Page:', THEMENAME ); ?><br>
-        		<?php $checked = ( $values['link_to_agent'] == 'yes' ) ? 'checked="checked"' : '' ?>
+        		<?php $checked = ( isset( $values['link_to_agent'] ) AND $values['link_to_agent'] == 'yes' ) ? 'checked="checked"' : '' ?>
         		<input <?php echo $checked ?> type='checkbox' id='<?php echo $this->get_field_id( 'link_to_agent' ); ?>' name='<?php echo $this->get_field_name( 'link_to_agent' ); ?>' value='yes' /><label for='<?php echo $this->get_field_id( 'link_to_agent' ); ?>'> <?php _e( 'Link agent\'s name to the agent page', THEMENAME ) ?></label>
         	</label>
         </p>

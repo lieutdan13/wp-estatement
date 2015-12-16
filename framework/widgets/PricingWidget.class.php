@@ -48,7 +48,6 @@ class bshPricingWidget extends WP_Widget {
 			'title'              => '',
 		);
 		$values = wp_parse_args( $instance, $defaults );
-        $image  = new WidgetImageField( $this, $values['image'] );
 
 		?>
         <p>

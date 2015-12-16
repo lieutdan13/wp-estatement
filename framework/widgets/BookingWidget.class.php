@@ -49,7 +49,6 @@ class bshBookingWidget extends WP_Widget {
 			'booking_page_id'              => '',
 		);
 		$values = wp_parse_args( $instance, $defaults );
-        $image  = new WidgetImageField( $this, $values['image'] );
 
 		?>
         <p>

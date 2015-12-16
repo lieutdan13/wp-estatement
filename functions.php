@@ -422,6 +422,7 @@ register_nav_menus( array(
 // 1.7 Available Sidebars
 register_sidebar( array(
 	'name'          => __( 'Sidebar', THEMENAME ),
+	'id'		=> 'sidebar-1',
 	'description'   => __( 'The default Estatement sidebar', THEMENAME ),
 	'before_widget' => '<div class="widget-container"><div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '<div class="end"></div></div></div>',
@@ -431,6 +432,7 @@ register_sidebar( array(
 
 register_sidebar( array(
 	'name'          => __( 'Default Blog Sidebar', THEMENAME ),
+	'id'		=> 'sidebar-2',
 	'description'   => __( 'The default Blog sidebar', THEMENAME ),
 	'before_widget' => '<div class="widget-container"><div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '<div class="end"></div></div></div>',
@@ -442,6 +444,7 @@ register_sidebar( array(
 
 register_sidebar( array(
 	'name'          => __( 'Property Page Sidebar', THEMENAME ),
+	'id'		=> 'sidebar-3',
 	'description'   => __( 'The default sidebar for property pages', THEMENAME ),
 	'before_widget' => '<div class="widget-container"><div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '<div class="end"></div></div></div>',
@@ -462,12 +465,14 @@ register_sidebar( array(
 
 register_sidebar( array(
 	'name'          => __( 'Agent Page Sidebar', THEMENAME ),
+	'id'		=> 'sidebar-5',
 	'description'   => __( 'The default Sidebar For Agent Pages', THEMENAME ),
 	'before_widget' => '<div class="widget-container"><div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '<div class="end"></div></div></div>',
 	'before_title'  => '<h1 class="widget-title">',
 	'after_title'   => '</h1>'
 ));
+$theme_sidebar_counter = 5;
 
 
 
@@ -975,21 +980,23 @@ function get_property_detail_list( $options, $post_id = 0 ) {
 		$raw_value = get_post_meta( $post_id, $key );
 		$value = est_customdata_value( $key, $raw_value );
 
-		$name = $customdata[$key]['name'];
-
-		if( function_exists( 'icl_t' ) ) {
-			$name = icl_t( 'Estatement - Custom Field Names', $customdata[$key]['name'], $customdata[$key]['name'] );
-		}
-
-
-		if( !empty( $value ) ) {
-			$shown_fields[] = array(
-				'name'  => $name,
-				'key'   => $key,
-				'value' => $value,
-				'raw_value' => $raw_value,
-				'order' => $data['order']
-			);
+		if( !empty( $customdata[$key] ) ) {
+			$name = $customdata[$key]['name'];
+		
+			if( function_exists( 'icl_t' ) ) {
+				$name = icl_t( 'Estatement - Custom Field Names', $customdata[$key]['name'], $customdata[$key]['name'] );
+			}
+		
+		
+			if( !empty( $value ) ) {
+				$shown_fields[] = array(
+					'name'  => $name,
+					'key'   => $key,
+					'value' => $value,
+					'raw_value' => $raw_value,
+					'order' => $data['order']
+				);
+			}
 		}
 	}
 	}
@@ -1618,11 +1625,13 @@ function est_session() {
 // 6.1 Custom Sidebar Generation
 $choices = explode(',', get_theme_mod( 'sidebars' ) );
 foreach( $choices as $choice ) {
+	$theme_sidebar_counter++;
 	$choice = trim( $choice );
 	if( !empty( $choice ) ) {
 
 		register_sidebar( array(
 			'name'          => $choice,
+			'id'		=> 'sidebar-' . $theme_sidebar_counter,
 	'before_widget' => '<div class="widget-container"><div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '<div class="end"></div></div></div>',
 	'before_title'  => '<h1 class="widget-title">',
@@ -3298,7 +3307,7 @@ function est_customdata_value( $detail, $value, $args = array() ) {
 	}
 	else {
 
-		if( $customdata[$detail]['type'] == 'text' AND is_array( $value ) ) {
+		if( isset( $customdata[$detail] ) AND $customdata[$detail]['type'] == 'text' AND is_array( $value ) ) {
 			$value = $value[0];
 		}
 
@@ -3392,7 +3401,7 @@ function est_customdata_value( $detail, $value, $args = array() ) {
 	}
 
 	$value_class = '';
-	if( !is_array( $value[0] ) ) {
+	if( isset( $value[0] ) AND !is_array( $value[0] ) ) {
 		$value_class = str_replace( '_est_meta_', '', $detail ) . '-' . $value[0];
 	}
 

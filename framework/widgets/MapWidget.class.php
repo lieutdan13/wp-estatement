@@ -54,7 +54,6 @@ class bshMapWidget extends WP_Widget {
 			'height'             => '250px',
 		);
 		$values = wp_parse_args( $instance, $defaults );
-        $image  = new WidgetImageField( $this, $values['image'] );
 
 		?>
         <p>
@@ -73,7 +72,7 @@ class bshMapWidget extends WP_Widget {
 
         <p>
         	<label for='<?php echo $this->get_field_id('autolocation'); ?>'>
-        		<?php $checked = ( $values['autolocation'] == 'yes' ) ? 'checked="checked"' : ''; ?>
+        		<?php $checked = ( !empty( $values['autolocation'] ) AND $values['autolocation'] == 'yes' ) ? 'checked="checked"' : ''; ?>
 				<input type='checkbox' <?php echo $checked ?> id='<?php echo $this->get_field_id( 'autolocation' ); ?>' name='<?php echo $this->get_field_name( 'autolocation' ); ?>' value='yes'> <label for='<?php echo $this->get_field_id( 'autolocation' ); ?>'><?php _e( 'Automatic Location', THEMENAME ) ?><br><label for='<?php echo $this->get_field_id( 'autolocation' ); ?>'><?php _e( 'If on a property page, get the location for this map from the location of the property (this will override the previous setting)', THEMENAME ) ?></label><br>
         	</label>
         </p>
