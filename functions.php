@@ -3306,7 +3306,9 @@ function est_customdata_value( $detail, $value, $args = array() ) {
 
 			$detailvalue = array();
 			foreach( $value as $item ) {
+				$prefix = '';
 				$detailvalueelement = '';
+				$suffix = '';
 				if( !empty( $customdata[$detail]['prefix'] ) ) {
 					$display = $customdata[$detail]['prefix'];
 					if( function_exists( 'icl_t' ) ) {

@@ -50,8 +50,8 @@
 			$large = wp_get_attachment_image_src( $thumbnail_id, 'est_large' );
 			$small = wp_get_attachment_image_src( $thumbnail_id, 'est_small' );
 			$images[$thumbnail_id] = array(
-				'large' => array( 'url' => $large[0], 'title' => get_the_title( $thumnail_id ) ),
-				'small' => array( 'url' => $small[0], 'title' => get_the_title( $thumnail_id ) ),
+				'large' => array( 'url' => $large[0], 'title' => get_the_title( $thumbnail_id ) ),
+				'small' => array( 'url' => $small[0], 'title' => get_the_title( $thumbnail_id ) ),
 			);
 		}
 		else {
