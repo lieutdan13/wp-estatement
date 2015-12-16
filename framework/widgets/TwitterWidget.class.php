@@ -37,7 +37,7 @@ class bshTwitterWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshTwitterWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Twitter Widget', THEMENAME ),
         	array(

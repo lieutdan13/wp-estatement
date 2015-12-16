@@ -33,7 +33,7 @@ class bshPropertyContactWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshPropertyContactWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Property Contact Form', THEMENAME ),
         	array(

@@ -35,7 +35,7 @@ class bshLatestPostsWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshLatestPostsWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Latest Posts', THEMENAME ),
         	array(

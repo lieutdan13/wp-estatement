@@ -33,7 +33,7 @@ class bshPricingWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshPricingWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Pricing Widget', THEMENAME ),
         	array(

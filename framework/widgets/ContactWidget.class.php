@@ -30,7 +30,7 @@ class bshContactWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshContactWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Contact Widget', THEMENAME ),
         	array(

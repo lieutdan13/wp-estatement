@@ -33,7 +33,7 @@ class bshPropertyDetailsWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshPropertyDetailsWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Property Custom Fields', THEMENAME ),
         	array(

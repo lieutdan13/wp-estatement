@@ -33,7 +33,7 @@ class bshMapWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshMapWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Map Widget', THEMENAME ),
         	array(

@@ -33,7 +33,7 @@ class bshPropertySearchWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshPropertySearchWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Property Search', THEMENAME ),
         	array(

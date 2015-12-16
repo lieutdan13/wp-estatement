@@ -33,7 +33,7 @@ class bshFeaturedItemWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshFeaturedItemWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Featured Item', THEMENAME ),
         	array(

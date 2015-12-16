@@ -30,7 +30,7 @@ class bshAgentContactWidget extends WP_Widget {
 
 	// 1.1 Constructor
 	function bshAgentContactWidget() {
-        parent::WP_Widget(
+        parent::__construct(
         	false,
         	__( 'Estatement: Agent Contact Widget', THEMENAME ),
         	array(
